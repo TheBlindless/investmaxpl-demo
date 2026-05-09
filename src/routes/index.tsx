@@ -1,26 +1,150 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Building2, Users, Wrench, TrendingUp, CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "InvestMax — Zarządzanie nieruchomościami w Bochni" },
+      { name: "description", content: "Zarabiaj na nieruchomościach bez zaangażowania. Kompleksowa obsługa najmu od 2009 roku." },
+    ],
+  }),
+  component: HomePage,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function HomePage() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+    <>
+      {/* HERO – jasne tło */}
+      <section className="bg-light relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(0.55_0.22_27_/_0.08),_transparent_50%)]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-medium text-muted-foreground mb-8 shadow-soft">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />
+              Zarządzanie nieruchomościami od 2009 roku
+            </div>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold text-foreground leading-[1.05]">
+              Zarabiaj na nieruchomościach<br />
+              <span className="text-brand-red">bez zaangażowania</span>
+            </h1>
+            <p className="mt-8 text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+              Administracja i zarządzanie nieruchomościami. Przejmujemy każdy etap — od przygotowania lokalu, przez znalezienie najemcy, po pełną obsługę najmu.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link
+                to="/wycena"
+                className="inline-flex items-center gap-2 rounded-md bg-brand-red px-7 py-3.5 text-base font-semibold text-white hover:opacity-90 transition shadow-soft"
+              >
+                Bezpłatna wycena <ArrowRight size={18} />
+              </Link>
+              <Link
+                to="/kontakt"
+                className="inline-flex items-center gap-2 rounded-md border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground hover:bg-secondary transition"
+              >
+                Kontakt
+              </Link>
+            </div>
 
-function Index() {
-  return <PlaceholderIndex />;
+            <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl">
+              <div>
+                <div className="text-3xl lg:text-4xl font-semibold text-foreground">15+</div>
+                <div className="text-xs text-muted-foreground mt-1">lat doświadczenia</div>
+              </div>
+              <div>
+                <div className="text-3xl lg:text-4xl font-semibold text-foreground">100%</div>
+                <div className="text-xs text-muted-foreground mt-1">obsługi pod klucz</div>
+              </div>
+              <div>
+                <div className="text-3xl lg:text-4xl font-semibold text-foreground">10%</div>
+                <div className="text-xs text-muted-foreground mt-1">prowizji od czynszu</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CIEMNA sekcja */}
+      <section className="bg-gradient-dark text-dark-foreground">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">
+                Nasz proces
+              </div>
+              <h2 className="text-3xl lg:text-5xl font-semibold leading-tight">
+                Kompleksowa obsługa najmu mieszkań, lokali usługowych i domów
+              </h2>
+              <p className="mt-6 text-dark-muted text-lg leading-relaxed">
+                Od 2009 roku zajmujemy się obsługą najmu w Bochni i okolicach. Bierzemy na siebie cały proces — od pierwszego kontaktu z najemcą, przez bieżące rozliczenia, aż po zapewnienie ciągłości dochodu właścicielowi.
+              </p>
+              <Link
+                to="/oferta"
+                className="mt-8 inline-flex items-center gap-2 text-brand-red font-semibold hover:gap-3 transition-all"
+              >
+                Dowiedz się więcej <ArrowRight size={18} />
+              </Link>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                { icon: Building2, title: "Przygotowanie lokalu", desc: "Wycena, dokumentacja, przygotowanie pod wynajem." },
+                { icon: Users, title: "Znalezienie najemcy", desc: "Selekcja i weryfikacja kandydatów." },
+                { icon: Wrench, title: "Obsługa najmu", desc: "Naprawy, przeglądy, kontakt z najemcą." },
+                { icon: TrendingUp, title: "Ciągłość dochodu", desc: "Rozliczenia, windykacja, dokumentacja." },
+              ].map(({ icon: Icon, title, desc }) => (
+                <div
+                  key={title}
+                  className="rounded-xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition-colors"
+                >
+                  <div className="inline-flex items-center justify-center w-11 h-11 rounded-md bg-brand-red/15 text-brand-red mb-4">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="font-semibold text-base">{title}</h3>
+                  <p className="mt-2 text-sm text-dark-muted leading-relaxed">{desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA jasna */}
+      <section className="bg-light">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-semibold text-foreground">
+                Dlaczego właściciele wybierają InvestMax?
+              </h2>
+              <ul className="mt-8 space-y-4">
+                {[
+                  "Pełna obsługa od A do Z bez zaangażowania właściciela",
+                  "Sprawdzeni najemcy i transparentne rozliczenia",
+                  "Reagowanie na awarie 7 dni w tygodniu",
+                  "Doświadczenie poparte ponad 15 latami praktyki",
+                ].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-foreground">
+                    <CheckCircle2 className="text-brand-red mt-0.5 flex-shrink-0" size={20} />
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white rounded-2xl border border-border shadow-elegant p-8 lg:p-10">
+              <h3 className="text-2xl font-semibold">Chcesz wiedzieć ile zarobisz?</h3>
+              <p className="mt-3 text-muted-foreground">
+                Wypełnij krótki formularz, a my przygotujemy bezpłatną wycenę zarządzania Twoją nieruchomością.
+              </p>
+              <Link
+                to="/wycena"
+                className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand-red px-6 py-3 text-base font-semibold text-white hover:opacity-90 transition"
+              >
+                Przejdź do wyceny <ArrowRight size={18} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
