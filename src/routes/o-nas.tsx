@@ -39,13 +39,19 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="aspect-[4/5] w-full rounded-2xl bg-gradient-to-br from-secondary to-muted border border-border shadow-elegant overflow-hidden flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-dark/10 flex items-center justify-center mb-4">
-                    <span className="text-4xl font-semibold text-dark/60">JP</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">Miejsce na zdjęcie</p>
-                  <p className="text-xs text-muted-foreground mt-1">mgr inż. Joanna Przetakiewicz</p>
+              <div className="aspect-[4/5] w-full rounded-2xl border border-border shadow-elegant overflow-hidden relative">
+                <img
+                  src={interiorLiving}
+                  alt="Wnętrze nieruchomości pod opieką InvestMax"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <div className="text-xs uppercase tracking-widest text-white/80">InvestMax</div>
+                  <div className="text-lg font-semibold mt-1">Zarządzane przez nas wnętrza</div>
                 </div>
               </div>
             </div>
