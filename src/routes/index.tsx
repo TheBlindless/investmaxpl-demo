@@ -1,5 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Building2, Users, Wrench, TrendingUp, CheckCircle2 } from "lucide-react";
+import heroBuilding from "@/assets/hero-building.jpg";
+import interiorLiving from "@/assets/interior-living.jpg";
+import interiorKitchen from "@/assets/interior-kitchen.jpg";
+import interiorBedroom from "@/assets/interior-bedroom.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
