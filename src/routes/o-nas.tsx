@@ -17,15 +17,19 @@ export const Route = createFileRoute("/o-nas")({
 function AboutPage() {
   return (
     <>
-      <section className="bg-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <section className="relative bg-light overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={bochnia} alt="Bochnia" className="h-full w-full object-cover opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-light via-light/90 to-light/40" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
             <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">O nas</div>
             <h1 className="text-4xl lg:text-6xl font-semibold text-foreground leading-tight">
               Doświadczenie, które buduje zaufanie
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              InvestMax działa od 2009 roku i zajmuje się kompleksowym zarządzaniem nieruchomościami — mieszkaniami, lokalami usługowymi oraz domami.
+              InvestMax działa od 2009 roku i zajmuje się kompleksowym zarządzaniem nieruchomościami — mieszkaniami, lokalami usługowymi oraz domami w Bochni i okolicach.
             </p>
           </div>
         </div>
