@@ -1,5 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Building2, Users, Wrench, TrendingUp, CheckCircle2 } from "lucide-react";
+import heroBuilding from "@/assets/hero-building.jpg";
+import interiorLiving from "@/assets/interior-living.jpg";
+import interiorKitchen from "@/assets/interior-kitchen.jpg";
+import interiorBedroom from "@/assets/interior-bedroom.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -20,51 +24,111 @@ function HomePage() {
         <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-brand-red/15 blur-3xl animate-blob pointer-events-none" />
         <div className="absolute top-1/2 -left-40 h-[28rem] w-[28rem] rounded-full bg-[oklch(0.7_0.12_27_/_0.12)] blur-3xl animate-blob pointer-events-none" style={{ animationDelay: "3s" }} />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_oklch(0.55_0.22_27_/_0.08),_transparent_50%)] pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-medium text-muted-foreground mb-8 shadow-soft animate-fade-up">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-red animate-pulse" />
-              Zarządzanie nieruchomościami od 2009 roku
-            </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] animate-fade-up delay-100">
-              Administracja i zarządzanie<br />
-              <span className="text-brand-red">nieruchomościami</span>
-            </h1>
-            <p className="mt-6 text-xl lg:text-2xl text-foreground/80 font-medium max-w-2xl animate-fade-up delay-200">
-              Dochód pasywny bez wychodzenia z domu.
-            </p>
-            <p className="mt-6 text-base lg:text-lg text-muted-foreground max-w-2xl leading-relaxed animate-fade-up delay-300">
-              Od 2009 r. firma zajmuje się obsługą najmu mieszkań, lokali usługowych oraz domów.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4 animate-fade-up delay-400">
-              <Link
-                to="/wycena"
-                className="inline-flex items-center gap-2 rounded-md bg-brand-red px-7 py-3.5 text-base font-semibold text-white hover:opacity-90 hover:-translate-y-0.5 hover:shadow-elegant transition-all duration-300 shadow-soft"
-              >
-                Wycena zarządzania <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-              <Link
-                to="/kontakt"
-                className="inline-flex items-center gap-2 rounded-md border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground hover:bg-secondary hover:-translate-y-0.5 transition-all duration-300"
-              >
-                Kontakt
-              </Link>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 text-xs font-medium text-muted-foreground mb-8 shadow-soft animate-fade-up">
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-red animate-pulse" />
+                Zarządzanie nieruchomościami od 2009 roku
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1] animate-fade-up delay-100">
+                Administracja i zarządzanie<br />
+                <span className="text-brand-red">nieruchomościami</span>
+              </h1>
+              <p className="mt-6 text-xl lg:text-2xl text-foreground/80 font-medium max-w-2xl animate-fade-up delay-200">
+                Dochód pasywny bez wychodzenia z domu.
+              </p>
+              <p className="mt-6 text-base lg:text-lg text-muted-foreground max-w-2xl leading-relaxed animate-fade-up delay-300">
+                Od 2009 r. firma zajmuje się obsługą najmu mieszkań, lokali usługowych oraz domów.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4 animate-fade-up delay-400">
+                <Link
+                  to="/wycena"
+                  className="inline-flex items-center gap-2 rounded-md bg-brand-red px-7 py-3.5 text-base font-semibold text-white hover:opacity-90 hover:-translate-y-0.5 hover:shadow-elegant transition-all duration-300 shadow-soft"
+                >
+                  Wycena zarządzania <ArrowRight size={18} />
+                </Link>
+                <Link
+                  to="/kontakt"
+                  className="inline-flex items-center gap-2 rounded-md border border-border bg-white px-7 py-3.5 text-base font-semibold text-foreground hover:bg-secondary hover:-translate-y-0.5 transition-all duration-300"
+                >
+                  Kontakt
+                </Link>
+              </div>
+
+              <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl animate-fade-up delay-500">
+                <div>
+                  <div className="text-3xl lg:text-4xl font-semibold text-foreground">15+</div>
+                  <div className="text-xs text-muted-foreground mt-1">lat doświadczenia</div>
+                </div>
+                <div>
+                  <div className="text-3xl lg:text-4xl font-semibold text-foreground">100%</div>
+                  <div className="text-xs text-muted-foreground mt-1">obsługi pod klucz</div>
+                </div>
+                <div>
+                  <div className="text-3xl lg:text-4xl font-semibold text-foreground">10%</div>
+                  <div className="text-xs text-muted-foreground mt-1">prowizji od czynszu</div>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-16 grid grid-cols-3 gap-8 max-w-xl animate-fade-up delay-500">
-              <div>
-                <div className="text-3xl lg:text-4xl font-semibold text-foreground">15+</div>
-                <div className="text-xs text-muted-foreground mt-1">lat doświadczenia</div>
-              </div>
-              <div>
-                <div className="text-3xl lg:text-4xl font-semibold text-foreground">100%</div>
-                <div className="text-xs text-muted-foreground mt-1">obsługi pod klucz</div>
-              </div>
-              <div>
-                <div className="text-3xl lg:text-4xl font-semibold text-foreground">10%</div>
-                <div className="text-xs text-muted-foreground mt-1">prowizji od czynszu</div>
+            <div className="lg:col-span-5 animate-fade-up delay-300">
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-tr from-brand-red/20 to-transparent rounded-3xl blur-2xl" />
+                <div className="relative overflow-hidden rounded-2xl border border-border shadow-elegant aspect-[4/5]">
+                  <img
+                    src={heroBuilding}
+                    alt="Nowoczesny budynek mieszkalny zarządzany przez InvestMax"
+                    width={1600}
+                    height={1024}
+                    className="h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark/40 via-transparent to-transparent" />
+                </div>
+                <div className="absolute -bottom-6 -left-6 hidden sm:block bg-white rounded-xl border border-border shadow-elegant p-4 max-w-[220px]">
+                  <div className="text-xs text-muted-foreground">Bochnia i okolice</div>
+                  <div className="text-sm font-semibold mt-1">Mieszkania · Lokale · Domy</div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GALERIA – jasna */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
+          <div className="max-w-2xl mb-12 animate-fade-up">
+            <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-3">Nasze realizacje</div>
+            <h2 className="text-3xl lg:text-4xl font-semibold">Nieruchomości pod naszą opieką</h2>
+            <p className="mt-4 text-muted-foreground">Mieszkania i lokale przygotowane oraz prowadzone przez InvestMax.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { src: interiorLiving, label: "Salon", sub: "Mieszkanie 2-pokojowe" },
+              { src: interiorKitchen, label: "Kuchnia", sub: "Apartament z aneksem" },
+              { src: interiorBedroom, label: "Sypialnia", sub: "Mieszkanie premium" },
+            ].map((g, i) => (
+              <div
+                key={g.label}
+                className="group relative overflow-hidden rounded-2xl border border-border shadow-soft hover:shadow-elegant transition-all duration-500 animate-fade-up"
+                style={{ animationDelay: `${0.1 + i * 0.1}s` }}
+              >
+                <img
+                  src={g.src}
+                  alt={g.label}
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="h-72 w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/80 via-dark/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                  <div className="text-xs uppercase tracking-widest text-white/70">{g.sub}</div>
+                  <div className="text-lg font-semibold">{g.label}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

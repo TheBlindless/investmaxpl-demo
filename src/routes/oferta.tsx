@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, FileText, Phone, Wrench, ClipboardList, ShieldAlert, RefreshCw, FolderCheck, ArrowRight } from "lucide-react";
+import interiorKitchen from "@/assets/interior-kitchen.jpg";
 
 export const Route = createFileRoute("/oferta")({
   head: () => ({
@@ -27,14 +28,28 @@ function OfferPage() {
     <>
       <section className="bg-light">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="max-w-3xl">
-            <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">Oferta</div>
-            <h1 className="text-4xl lg:text-6xl font-semibold leading-tight">
-              Pełna obsługa Twojej nieruchomości
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Bierzemy na siebie wszystko, co wiąże się z najmem — od formalności po techniczną obsługę lokalu.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">Oferta</div>
+              <h1 className="text-4xl lg:text-6xl font-semibold leading-tight">
+                Pełna obsługa Twojej nieruchomości
+              </h1>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Bierzemy na siebie wszystko, co wiąże się z najmem — od formalności po techniczną obsługę lokalu.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="overflow-hidden rounded-2xl border border-border shadow-elegant aspect-[4/3]">
+                <img
+                  src={interiorKitchen}
+                  alt="Nowoczesne wnętrze pod zarządem InvestMax"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

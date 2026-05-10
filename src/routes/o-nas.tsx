@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Award, Calendar, MapPin } from "lucide-react";
 import signature from "@/assets/signature.png";
+import bochnia from "@/assets/bochnia-city.jpg";
+import interiorLiving from "@/assets/interior-living.jpg";
 
 export const Route = createFileRoute("/o-nas")({
   head: () => ({
@@ -15,15 +17,19 @@ export const Route = createFileRoute("/o-nas")({
 function AboutPage() {
   return (
     <>
-      <section className="bg-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <section className="relative bg-light overflow-hidden">
+        <div className="absolute inset-0">
+          <img src={bochnia} alt="Bochnia" className="h-full w-full object-cover opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-light via-light/90 to-light/40" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl">
             <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">O nas</div>
             <h1 className="text-4xl lg:text-6xl font-semibold text-foreground leading-tight">
               Doświadczenie, które buduje zaufanie
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              InvestMax działa od 2009 roku i zajmuje się kompleksowym zarządzaniem nieruchomościami — mieszkaniami, lokalami usługowymi oraz domami.
+              InvestMax działa od 2009 roku i zajmuje się kompleksowym zarządzaniem nieruchomościami — mieszkaniami, lokalami usługowymi oraz domami w Bochni i okolicach.
             </p>
           </div>
         </div>
@@ -33,13 +39,19 @@ function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="aspect-[4/5] w-full rounded-2xl bg-gradient-to-br from-secondary to-muted border border-border shadow-elegant overflow-hidden flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-dark/10 flex items-center justify-center mb-4">
-                    <span className="text-4xl font-semibold text-dark/60">JP</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">Miejsce na zdjęcie</p>
-                  <p className="text-xs text-muted-foreground mt-1">mgr inż. Joanna Przetakiewicz</p>
+              <div className="aspect-[4/5] w-full rounded-2xl border border-border shadow-elegant overflow-hidden relative">
+                <img
+                  src={interiorLiving}
+                  alt="Wnętrze nieruchomości pod opieką InvestMax"
+                  loading="lazy"
+                  width={1280}
+                  height={960}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <div className="text-xs uppercase tracking-widest text-white/80">InvestMax</div>
+                  <div className="text-lg font-semibold mt-1">Zarządzane przez nas wnętrza</div>
                 </div>
               </div>
             </div>
