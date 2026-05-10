@@ -23,19 +23,22 @@ function HomePage() {
               <span className="h-1.5 w-1.5 rounded-full bg-brand-red" />
               Zarządzanie nieruchomościami od 2009 roku
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold text-foreground leading-[1.05]">
-              Zarabiaj na nieruchomościach<br />
-              <span className="text-brand-red">bez zaangażowania</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-foreground leading-[1.1]">
+              Administracja i zarządzanie<br />
+              <span className="text-brand-red">nieruchomościami</span>
             </h1>
-            <p className="mt-8 text-lg lg:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              Administracja i zarządzanie nieruchomościami. Przejmujemy każdy etap — od przygotowania lokalu, przez znalezienie najemcy, po pełną obsługę najmu.
+            <p className="mt-6 text-xl lg:text-2xl text-foreground/80 font-medium max-w-2xl">
+              Dochód pasywny bez wychodzenia z domu.
+            </p>
+            <p className="mt-6 text-base lg:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              Od 2009 r. firma zajmuje się obsługą najmu mieszkań, lokali usługowych oraz domów.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to="/wycena"
                 className="inline-flex items-center gap-2 rounded-md bg-brand-red px-7 py-3.5 text-base font-semibold text-white hover:opacity-90 transition shadow-soft"
               >
-                Bezpłatna wycena <ArrowRight size={18} />
+                Wycena zarządzania <ArrowRight size={18} />
               </Link>
               <Link
                 to="/kontakt"
@@ -87,10 +90,10 @@ function HomePage() {
 
             <div className="grid sm:grid-cols-2 gap-4">
               {[
-                { icon: Building2, title: "Przygotowanie lokalu", desc: "Wycena, dokumentacja, przygotowanie pod wynajem." },
-                { icon: Users, title: "Znalezienie najemcy", desc: "Selekcja i weryfikacja kandydatów." },
-                { icon: Wrench, title: "Obsługa najmu", desc: "Naprawy, przeglądy, kontakt z najemcą." },
-                { icon: TrendingUp, title: "Ciągłość dochodu", desc: "Rozliczenia, windykacja, dokumentacja." },
+                { icon: Building2, title: "Przygotowanie nieruchomości", desc: "Przygotowanie lokalu, dokumentacja i wycena pod wynajem." },
+                { icon: Users, title: "Weryfikacja najemcy", desc: "Selekcja i sprawdzenie wiarygodności kandydatów." },
+                { icon: Wrench, title: "Obsługa najmu", desc: "Naprawy, przeglądy i bieżący kontakt z najemcą." },
+                { icon: TrendingUp, title: "Ciągłość dochodu", desc: "Rozliczenia, windykacja i pełna dokumentacja." },
               ].map(({ icon: Icon, title, desc }) => (
                 <div
                   key={title}
