@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Award, Calendar, MapPin } from "lucide-react";
 import signature from "@/assets/signature.png";
+import bochnia from "@/assets/bochnia-city.jpg";
+import interiorLiving from "@/assets/interior-living.jpg";
 
 export const Route = createFileRoute("/o-nas")({
   head: () => ({
