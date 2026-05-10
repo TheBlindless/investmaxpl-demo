@@ -115,10 +115,12 @@ function HomePage() {
       </section>
 
       {/* CTA jasna */}
-      <section className="bg-light">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+      <section className="bg-light relative overflow-hidden">
+        <div className="absolute -top-24 right-0 h-80 w-80 rounded-full bg-brand-red/10 blur-3xl animate-blob pointer-events-none" />
+        <div className="absolute bottom-0 -left-24 h-72 w-72 rounded-full bg-[oklch(0.7_0.05_260_/_0.25)] blur-3xl animate-blob pointer-events-none" style={{ animationDelay: "5s" }} />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
           <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
+            <div className="animate-fade-up">
               <h2 className="text-3xl lg:text-4xl font-semibold text-foreground">
                 Dlaczego właściciele wybierają InvestMax?
               </h2>
@@ -128,22 +130,27 @@ function HomePage() {
                   "Sprawdzeni najemcy i transparentne rozliczenia",
                   "Reagowanie na awarie 7 dni w tygodniu",
                   "Doświadczenie poparte ponad 15 latami praktyki",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-foreground">
+                ].map((t, i) => (
+                  <li
+                    key={t}
+                    className="flex items-start gap-3 text-foreground animate-fade-up"
+                    style={{ animationDelay: `${0.15 + i * 0.1}s` }}
+                  >
                     <CheckCircle2 className="text-brand-red mt-0.5 flex-shrink-0" size={20} />
                     <span>{t}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-white rounded-2xl border border-border shadow-elegant p-8 lg:p-10">
+            <div className="relative bg-white rounded-2xl border border-border shadow-elegant p-8 lg:p-10 animate-fade-up delay-200 hover:-translate-y-1 hover:shadow-[0_30px_80px_-20px_oklch(0.55_0.22_27_/_0.25)] transition-all duration-500">
+              <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-brand-red to-transparent" />
               <h3 className="text-2xl font-semibold">Chcesz wiedzieć ile zarobisz?</h3>
               <p className="mt-3 text-muted-foreground">
                 Wypełnij krótki formularz, a my przygotujemy bezpłatną wycenę zarządzania Twoją nieruchomością.
               </p>
               <Link
                 to="/wycena"
-                className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand-red px-6 py-3 text-base font-semibold text-white hover:opacity-90 transition"
+                className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand-red px-6 py-3 text-base font-semibold text-white hover:opacity-90 hover:-translate-y-0.5 transition-all duration-300"
               >
                 Przejdź do wyceny <ArrowRight size={18} />
               </Link>
