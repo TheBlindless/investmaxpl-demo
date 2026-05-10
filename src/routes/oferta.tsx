@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, FileText, Phone, Wrench, ClipboardList, ShieldAlert, RefreshCw, FolderCheck, ArrowRight } from "lucide-react";
+import interiorKitchen from "@/assets/interior-kitchen.jpg";
 
 export const Route = createFileRoute("/oferta")({
   head: () => ({
