@@ -220,6 +220,12 @@
       radial-gradient(ellipse at bottom left, oklch(0.9 0.03 250 / 0.5), transparent 55%),
       linear-gradient(135deg, oklch(0.97 0.01 60), oklch(0.94 0.02 30));
   }
+  .bg-soft {
+    background:
+      radial-gradient(ellipse at top left, oklch(0.95 0.03 27 / 0.35), transparent 55%),
+      radial-gradient(ellipse at bottom right, oklch(0.94 0.025 250 / 0.4), transparent 60%),
+      linear-gradient(180deg, #ffffff, oklch(0.985 0.005 60));
+  }
   .hero-grid {
     background-image:
       linear-gradient(to right, oklch(0.2 0.01 260 / 0.05) 1px, transparent 1px),
