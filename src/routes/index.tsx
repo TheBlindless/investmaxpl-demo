@@ -18,8 +18,8 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <>
-      {/* HERO – jasne tło */}
-      <section className="bg-light relative overflow-hidden">
+      {/* HERO – ciepłe tło */}
+      <section className="bg-hero relative overflow-hidden">
         <div className="absolute inset-0 hero-grid pointer-events-none" />
         <div className="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-brand-red/15 blur-3xl animate-blob pointer-events-none" />
         <div className="absolute top-1/2 -left-40 h-[28rem] w-[28rem] rounded-full bg-[oklch(0.7_0.12_27_/_0.12)] blur-3xl animate-blob pointer-events-none" style={{ animationDelay: "3s" }} />
