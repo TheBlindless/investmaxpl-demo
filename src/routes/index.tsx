@@ -96,7 +96,9 @@ function HomePage() {
       </section>
 
       {/* GALERIA – jasna */}
-      <section className="bg-white">
+      <section className="bg-soft relative overflow-hidden">
+        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-brand-red/10 blur-3xl animate-blob pointer-events-none" />
+        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-[oklch(0.7_0.08_250_/_0.18)] blur-3xl animate-blob pointer-events-none" style={{ animationDelay: "4s" }} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
           <div className="max-w-2xl mb-12 animate-fade-up">
             <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-3">Nasze realizacje</div>

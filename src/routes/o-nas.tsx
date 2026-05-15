@@ -17,14 +17,19 @@ export const Route = createFileRoute("/o-nas")({
 function AboutPage() {
   return (
     <>
-      <section className="relative bg-light overflow-hidden">
+      <section className="relative bg-hero overflow-hidden">
         <div className="absolute inset-0">
-          <img src={bochnia} alt="Bochnia" className="h-full w-full object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-r from-light via-light/90 to-light/40" />
+          <img src={bochnia} alt="Bochnia" className="h-full w-full object-cover opacity-15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-light via-light/85 to-transparent" />
         </div>
+        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-red/15 blur-3xl animate-blob pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[oklch(0.7_0.08_250_/_0.2)] blur-3xl animate-blob pointer-events-none" style={{ animationDelay: "3s" }} />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
-          <div className="max-w-3xl">
-            <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">O nas</div>
+          <div className="max-w-3xl animate-fade-up">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 backdrop-blur px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-red mb-6 shadow-soft">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-red animate-pulse" />
+              O nas
+            </div>
             <h1 className="text-4xl lg:text-6xl font-semibold text-foreground leading-tight">
               Doświadczenie, które buduje zaufanie
             </h1>
@@ -35,7 +40,9 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white">
+      <section className="bg-soft relative overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[28rem] w-[28rem] rounded-full bg-brand-red/10 blur-3xl animate-blob pointer-events-none" />
+        <div className="absolute -bottom-40 -right-40 h-[28rem] w-[28rem] rounded-full bg-[oklch(0.7_0.08_250_/_0.18)] blur-3xl animate-blob pointer-events-none" style={{ animationDelay: "5s" }} />
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
