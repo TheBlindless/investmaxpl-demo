@@ -68,7 +68,7 @@ function ContactPage() {
         <div className="mt-10 rounded-2xl overflow-hidden border border-border shadow-elegant">
           <iframe
             title="Mapa — InvestMax"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=20.41%2C49.96%2C20.45%2C49.98&layer=mapnik&marker=49.969%2C20.43"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=20.4225%2C49.9660%2C20.4425%2C49.9760&layer=mapnik&marker=49.9710%2C20.4325"
             className="w-full h-80 border-0"
             loading="lazy"
           />
