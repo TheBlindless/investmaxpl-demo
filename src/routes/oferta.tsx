@@ -63,7 +63,8 @@ function OfferPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 transition">
+            <div className="rounded-2xl border border-brand-red bg-brand-red/10 p-8 relative">
+              <span className="absolute -top-3 left-8 bg-brand-red text-white text-xs font-semibold px-3 py-1 rounded-full">Najczęściej wybierane</span>
               <div className="text-sm font-semibold text-brand-red uppercase tracking-wider">Najem standardowy</div>
               <div className="mt-4 flex items-baseline gap-1">
                 <span className="text-5xl font-semibold">10%</span>
@@ -72,8 +73,7 @@ function OfferPage() {
               <p className="mt-4 text-sm text-dark-muted">Mieszkania i domy wynajmowane w całości.</p>
             </div>
 
-            <div className="rounded-2xl border border-brand-red bg-brand-red/10 p-8 relative">
-              <span className="absolute -top-3 left-8 bg-brand-red text-white text-xs font-semibold px-3 py-1 rounded-full">Najczęściej wybierane</span>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-8 hover:bg-white/10 transition">
               <div className="text-sm font-semibold text-brand-red uppercase tracking-wider">Wynajem na pokoje</div>
               <div className="mt-4 flex items-baseline gap-1">
                 <span className="text-5xl font-semibold">15%</span>

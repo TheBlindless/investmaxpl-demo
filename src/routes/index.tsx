@@ -105,9 +105,8 @@ function HomePage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { src: interiorLiving, label: "Salon", sub: "Mieszkanie 2-pokojowe" },
-              { src: interiorKitchen, label: "Kuchnia", sub: "Apartament z aneksem" },
-              { src: interiorBedroom, label: "Sypialnia", sub: "Mieszkanie premium" },
+              { src: interiorLiving, label: "Mieszkanie 2-pokojowe", sub: "Kraków" },
+              { src: interiorKitchen, label: "Mieszkanie 3-pokojowe", sub: "Bochnia" },
             ].map((g, i) => (
               <div
                 key={g.label}
