@@ -27,10 +27,10 @@ function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 border-b border-border ${
         scrolled
-          ? "bg-dark/95 backdrop-blur-md shadow-elegant"
-          : "bg-dark"
+          ? "bg-white/95 backdrop-blur-md shadow-soft"
+          : "bg-white"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,8 +44,8 @@ function Navbar() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="px-4 py-2 text-sm font-medium text-dark-foreground/80 hover:text-dark-foreground transition-colors relative group"
-                activeProps={{ className: "px-4 py-2 text-sm font-medium text-dark-foreground relative group" }}
+                className="px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors relative group"
+                activeProps={{ className: "px-4 py-2 text-sm font-medium text-foreground relative group" }}
               >
                 {item.label}
                 <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-brand-red scale-x-0 group-hover:scale-x-100 transition-transform" />
@@ -60,7 +60,7 @@ function Navbar() {
           </nav>
 
           <button
-            className="lg:hidden text-dark-foreground p-2"
+            className="lg:hidden text-foreground p-2"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -69,12 +69,12 @@ function Navbar() {
         </div>
 
         {open && (
-          <nav className="lg:hidden pb-6 flex flex-col gap-1 border-t border-white/10 pt-4">
+          <nav className="lg:hidden pb-6 flex flex-col gap-1 border-t border-border pt-4">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="px-4 py-3 text-base font-medium text-dark-foreground/80 hover:text-dark-foreground hover:bg-white/5 rounded-md"
+                className="px-4 py-3 text-base font-medium text-foreground/80 hover:text-foreground hover:bg-secondary rounded-md"
               >
                 {item.label}
               </Link>
