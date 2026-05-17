@@ -122,40 +122,6 @@ async function sendViaResend(data: QuotePayload) {
   return { ok: true as const, provider: 'resend', id: result.id }
 }
 
-async function sendViaInternalQueue(request: Request, data: QuotePayload) {
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
-  if (!serviceKey) {
-    return { ok: false as const, reason: 'missing_service_role' }
-  }
-
-  const origin = new URL(request.url).origin
-  const sendUrl = `${origin}/lovable/email/transactional/send`
-  const response = await fetch(sendUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${serviceKey}`,
-    },
-    body: JSON.stringify({
-      templateName: 'quote-request',
-      recipientEmail: OFFICE_EMAIL,
-      idempotencyKey: `quote-${crypto.randomUUID()}`,
-      templateData: data,
-    }),
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text().catch(() => '')
-    console.error('Internal email queue send failed', {
-      status: response.status,
-      error: errorText.slice(0, 1000),
-    })
-    return { ok: false as const, reason: 'queue_failed', status: response.status }
-  }
-
-  return { ok: true as const, provider: 'queue' }
-}
-
 export const Route = createFileRoute('/api/public/contact-quote')({
   server: {
     handlers: {
@@ -180,14 +146,9 @@ export const Route = createFileRoute('/api/public/contact-quote')({
           return Response.json({ success: true, provider: resendResult.provider })
         }
 
-        const fallbackResult = await sendViaInternalQueue(request, parsed.data)
-        if (fallbackResult.ok) {
-          return Response.json({ success: true, provider: fallbackResult.provider })
-        }
-
         console.error('Contact quote delivery unavailable', {
           resend_reason: resendResult.reason,
-          fallback_reason: fallbackResult.reason,
+          reply_to_redacted: redactEmail(parsed.data.email),
         })
 
         return Response.json(
