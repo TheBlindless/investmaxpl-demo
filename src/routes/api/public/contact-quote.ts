@@ -119,6 +119,12 @@ async function sendViaResend(data: QuotePayload) {
     return { ok: false as const, reason: 'resend_invalid_response' }
   }
 
+  console.info('Resend email accepted', {
+    message_id: result.id,
+    recipient_redacted: redactEmail(OFFICE_EMAIL),
+    reply_to_redacted: redactEmail(data.email),
+  })
+
   return { ok: true as const, provider: 'resend', id: result.id }
 }
 
