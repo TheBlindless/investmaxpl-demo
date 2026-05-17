@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { z } from "zod";
 import { CheckCircle2 } from "lucide-react";
 
@@ -27,9 +27,16 @@ const schema = z.object({
 function QuotePage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const successRef = useRef<HTMLDivElement | null>(null);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitting) return;
+    setServerError(null);
+
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries());
     const res = schema.safeParse(data);
@@ -40,12 +47,27 @@ function QuotePage() {
       return;
     }
     setErrors({});
-    const subject = encodeURIComponent("Wycena — InvestMax");
-    const body = encodeURIComponent(
-      `Imię i nazwisko: ${res.data.name}\nTelefon: ${res.data.phone}\nEmail: ${res.data.email}\nTyp nieruchomości: ${res.data.type}\nAdres: ${res.data.address || "-"}\nLiczba pokoi: ${res.data.rooms || "-"}\nMetraż: ${res.data.area || "-"}\n\nDodatkowe informacje:\n${res.data.message || "-"}`
-    );
-    window.location.href = `mailto:biuro@invest-max.pl?subject=${subject}&body=${body}`;
-    setSent(true);
+    setSubmitting(true);
+    try {
+      const response = await fetch("/api/public/contact-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(res.data),
+      });
+      if (!response.ok) {
+        const body = await response.json().catch(() => ({}));
+        throw new Error(body?.error || "Nie udało się wysłać formularza.");
+      }
+      setSent(true);
+      formRef.current?.reset();
+      setTimeout(() => {
+        successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 50);
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Wystąpił błąd. Spróbuj ponownie.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -60,16 +82,33 @@ function QuotePage() {
         </div>
 
         {sent && (
-          <div className="mb-8 rounded-xl border border-brand-red/30 bg-brand-red/5 p-5 flex items-start gap-3">
-            <CheckCircle2 className="text-brand-red mt-0.5" size={20} />
+          <div
+            ref={successRef}
+            role="status"
+            aria-live="polite"
+            className="mb-8 rounded-xl border border-green-200 bg-green-50 p-5 flex items-start gap-3"
+          >
+            <CheckCircle2 className="text-green-600 mt-0.5 shrink-0" size={22} />
             <div>
-              <p className="font-semibold text-foreground">Dziękujemy!</p>
-              <p className="text-sm text-muted-foreground">Otworzyliśmy Twój klient pocztowy. Skontaktujemy się wkrótce.</p>
+              <p className="font-semibold text-green-900">Dziękujemy! Formularz został wysłany.</p>
+              <p className="text-sm text-green-800 mt-1">
+                Twoje zapytanie trafiło do nas na <strong>biuro@invest-max.pl</strong>. Skontaktujemy się w ciągu 24 godzin.
+              </p>
             </div>
           </div>
         )}
 
-        <form onSubmit={onSubmit} className="bg-white rounded-2xl border border-border shadow-elegant p-8 lg:p-10 space-y-6">
+        {serverError && (
+          <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+            {serverError}
+          </div>
+        )}
+
+        <form
+          ref={formRef}
+          onSubmit={onSubmit}
+          className="bg-white rounded-2xl border border-border shadow-elegant p-8 lg:p-10 space-y-6"
+        >
           <div className="grid sm:grid-cols-2 gap-5">
             <Field label="Imię i nazwisko *" name="name" error={errors.name} />
             <Field label="Telefon *" name="phone" type="tel" error={errors.phone} />
@@ -107,9 +146,10 @@ function QuotePage() {
 
           <button
             type="submit"
-            className="w-full rounded-md bg-brand-red px-6 py-3.5 text-base font-semibold text-white hover:opacity-90 transition"
+            disabled={submitting}
+            className="w-full rounded-md bg-brand-red px-6 py-3.5 text-base font-semibold text-white hover:opacity-90 transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            Wyślij zapytanie
+            {submitting ? "wysyłanie..." : "Wyślij zapytanie"}
           </button>
 
           <p className="text-xs text-muted-foreground text-center">
