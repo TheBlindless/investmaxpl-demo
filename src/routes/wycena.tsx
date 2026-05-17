@@ -71,7 +71,7 @@ function QuotePage() {
   };
 
   return (
-    <section className="bg-light min-h-[80vh]">
+    <section className="bg-quote-fade min-h-[80vh]">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="text-xs font-semibold uppercase tracking-widest text-brand-red mb-4">Wycena</div>
