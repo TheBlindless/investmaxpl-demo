@@ -226,6 +226,9 @@
       radial-gradient(ellipse at bottom right, oklch(0.94 0.025 250 / 0.4), transparent 60%),
       linear-gradient(180deg, #ffffff, oklch(0.985 0.005 60));
   }
+  .bg-quote-fade {
+    background: linear-gradient(160deg, oklch(0.99 0.002 250), oklch(0.975 0.004 60));
+  }
   .hero-grid {
     background-image:
       linear-gradient(to right, oklch(0.2 0.01 260 / 0.05) 1px, transparent 1px),
