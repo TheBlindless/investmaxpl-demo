@@ -35,6 +35,7 @@ function QuotePage() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (submitting) return;
+    setSent(false);
     setServerError(null);
 
     const fd = new FormData(e.currentTarget);
