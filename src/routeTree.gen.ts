@@ -14,6 +14,7 @@ import { Route as OfertaRouteImport } from './routes/oferta'
 import { Route as ONasRouteImport } from './routes/o-nas'
 import { Route as KontaktRouteImport } from './routes/kontakt'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const WycenaRoute = WycenaRouteImport.update({
   id: '/wycena',
@@ -40,6 +41,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +54,7 @@ export interface FileRoutesByFullPath {
   '/o-nas': typeof ONasRoute
   '/oferta': typeof OfertaRoute
   '/wycena': typeof WycenaRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +62,7 @@ export interface FileRoutesByTo {
   '/o-nas': typeof ONasRoute
   '/oferta': typeof OfertaRoute
   '/wycena': typeof WycenaRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +71,33 @@ export interface FileRoutesById {
   '/o-nas': typeof ONasRoute
   '/oferta': typeof OfertaRoute
   '/wycena': typeof WycenaRoute
+  '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/kontakt' | '/o-nas' | '/oferta' | '/wycena'
+  fullPaths:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/oferta'
+    | '/wycena'
+    | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/kontakt' | '/o-nas' | '/oferta' | '/wycena'
-  id: '__root__' | '/' | '/kontakt' | '/o-nas' | '/oferta' | '/wycena'
+  to:
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/oferta'
+    | '/wycena'
+    | '/lovable/email/queue/process'
+  id:
+    | '__root__'
+    | '/'
+    | '/kontakt'
+    | '/o-nas'
+    | '/oferta'
+    | '/wycena'
+    | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +106,7 @@ export interface RootRouteChildren {
   ONasRoute: typeof ONasRoute
   OfertaRoute: typeof OfertaRoute
   WycenaRoute: typeof WycenaRoute
+  LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +146,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +162,7 @@ const rootRouteChildren: RootRouteChildren = {
   ONasRoute: ONasRoute,
   OfertaRoute: OfertaRoute,
   WycenaRoute: WycenaRoute,
+  LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
